@@ -1638,7 +1638,7 @@ public class XsltIntegratedExtension : Example
                                   @" <out sqrt2='{math:sqrt(2.0e0)}' " +
                                   @"      defaultNamespace='{env:defaultNamespace()}' " +
                                   @"      sqrtEmpty='{math:sqrt(())}'> " +
-                                  @"   <defaultNS xmlns='http://example.com/ns1' value='{env:defaultNamespace()}' xsl:xpath-default-namespace='http://default.namespace.com/' /> " +
+                                  @"   <defaultNS xmlns='http://example.com/ns1' defaultNamespace='{env:defaultNamespace()}' xsl:xpath-default-namespace='http://default.namespace.com/' /> " +
                                   @" </out> " +
                                   @" </xsl:template> " +
                                   @" </xsl:transform>";
