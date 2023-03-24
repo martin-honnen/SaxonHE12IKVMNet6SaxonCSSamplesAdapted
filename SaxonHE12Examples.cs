@@ -11,7 +11,7 @@ using net.sf.saxon.value;
 using javax.xml.transform;
 using net.sf.saxon.resource;
 using javax.xml.transform.stream;
-
+using net.sf.saxon.type;
 
 namespace SaxonHE12IKVMNet6SaxonCSSamplesAdapted;
 
@@ -1637,9 +1637,8 @@ public class XsltIntegratedExtension : Example
                                   @" <xsl:template name='xsl:initial-template'> " +
                                   @" <out sqrt2='{math:sqrt(2.0e0)}' " +
                                   @"      defaultNamespace='{env:defaultNamespace()}' " +
-                                  //@"      sqrtEmpty='{math:sqrt(())}'> " +
-                                  @"      sqrtEmpty='math:sqrt(())'> " +
-                                  @"   <defaultNS value='{env:defaultNamespace()}' xsl:xpath-default-namespace='http://default.namespace.com/' /> " +
+                                  @"      sqrtEmpty='{math:sqrt(())}'> " +
+                                  @"   <defaultNS xmlns='http://example.com/ns1' value='{env:defaultNamespace()}' xsl:xpath-default-namespace='http://default.namespace.com/' /> " +
                                   @" </out> " +
                                   @" </xsl:template> " +
                                   @" </xsl:transform>";
@@ -1714,7 +1713,7 @@ public class Sqrt : ExtensionFunctionDefinition
 
     public override net.sf.saxon.value.SequenceType getResultType(net.sf.saxon.value.SequenceType[] starr)
     {
-        return net.sf.saxon.value.SequenceType.OPTIONAL_DOUBLE;
+        return net.sf.saxon.value.SequenceType.makeSequenceType(BuiltInAtomicType.DOUBLE, StaticProperty.ALLOWS_ZERO_OR_MORE);//net.sf.saxon.value.SequenceType.OPTIONAL_DOUBLE;
     }
 
     public override ExtensionFunctionCall makeCallExpression()
@@ -1809,7 +1808,7 @@ public class DefaultNamespace : ExtensionFunctionDefinition
 
     public override net.sf.saxon.value.SequenceType getResultType(net.sf.saxon.value.SequenceType[] starr)
     {
-        return net.sf.saxon.value.SequenceType.OPTIONAL_STRING;
+        return net.sf.saxon.value.SequenceType.makeSequenceType(BuiltInAtomicType.STRING, StaticProperty.ALLOWS_ZERO_OR_MORE);
     }
 
     public override ExtensionFunctionCall makeCallExpression()
@@ -1863,8 +1862,7 @@ public class XsltSimpleExtension : Example
                                   @"    xmlns:math='http://example.math.co.uk/demo'> " +
                                   @" <xsl:template name='xsl:initial-template'> " +
                                   @"   <out sqrt2='{math:sqrtSimple(2.0e0)}' " +
-                                  //@"        sqrtEmpty='{math:sqrtSimple(())}'/> " +
-                                  @"        sqrtEmpty='math:sqrtSimple(())'/> " +
+                                  @"        sqrtEmpty='{math:sqrtSimple(())}'/> " +
                                   @" </xsl:template>" +
                                   @" </xsl:transform>";
 
@@ -1909,7 +1907,7 @@ public class XsltSimpleExtension : Example
 
         public net.sf.saxon.s9api.SequenceType getResultType()
         {
-            return net.sf.saxon.s9api.SequenceType.makeSequenceType(net.sf.saxon.s9api.ItemType.DOUBLE, OccurrenceIndicator.ZERO_OR_ONE);
+            return net.sf.saxon.s9api.SequenceType.makeSequenceType(net.sf.saxon.s9api.ItemType.DOUBLE, OccurrenceIndicator.ZERO_OR_MORE);
         }
     }
 }
