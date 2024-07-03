@@ -1,1 +1,1 @@
-# Saxon 12 samples showing the use of the IKVM cross-compiled Saxon HE 12.4 from Maven in .NET 6 and .NET 8 code
+# Saxon 12 samples showing the use of the IKVM cross-compiled Saxon HE 12.5 from Maven in .NET 6 and .NET 8 code
