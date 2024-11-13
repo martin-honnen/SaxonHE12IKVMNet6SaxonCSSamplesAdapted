@@ -18,7 +18,7 @@ namespace SaxonHE12IKVMNet6SaxonCSSamplesAdapted;
 public class SaxonHE12Examples
 {
     /// <summary>
-    /// Run Saxon XSLT and XQuery sample applications in Saxon HE 12 .NET 6 cross-compiled using IKVM
+    /// Run Saxon XSLT and XQuery sample applications in Saxon HE 12 .NET 8 or .NET 9 cross-compiled using IKVM
     /// </summary>
     /// <param name="argv">
     /// <para>Options:</para>
